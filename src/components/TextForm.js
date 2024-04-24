@@ -17,6 +17,11 @@ export default function TextForm(props) {
         setText(lowerText);
     }
 
+    const handleClearClick = (event) => {
+      let clearText = '';
+      setText(clearText);
+    }
+
 // Declare a new state variable, which we'll call "count"
 const [text, setText] = useState('');
     // setText('new text');
@@ -35,6 +40,7 @@ const [text, setText] = useState('');
       </div>
       <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
       <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to LowerCase</button>
+      <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
     </div>
     <div className="container my-3">
       <h2>Your text summary</h2>
