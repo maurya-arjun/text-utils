@@ -12,14 +12,27 @@ export default function TextForm(props) {
         setText(event.target.value);
     }
 
-    const handleLowClick = (event) => {
+    const handleLowClick = () => {
         let lowerText = text.toLowerCase();
         setText(lowerText);
     }
 
-    const handleClearClick = (event) => {
+    const handleClearClick = () => {
       let clearText = '';
       setText(clearText);
+    }
+
+    const handleCopyClick = () => {
+        let textArea = document.getElementById('myBox');
+        textArea.select();
+        navigator.clipboard.writeText(textArea.value);
+    }
+
+    const handleExtraSpacesClick = () => {
+        // let newText = text.split(/[ ]+/);
+        // setText(newText.join( " "));
+        let newString = text.replace(/\s+/g,' ').trim();
+        setText(newString);
     }
 
 // Declare a new state variable, which we'll call "count"
@@ -41,6 +54,8 @@ const [text, setText] = useState('');
       <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
       <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to LowerCase</button>
       <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
+      <button className="btn btn-primary mx-2" onClick={handleCopyClick}>Copy Text</button>
+      <button className="btn btn-primary mx-2" onClick={handleExtraSpacesClick}>Remove Extra Spaces</button>
     </div>
     <div className="container my-3">
       <h2>Your text summary</h2>
