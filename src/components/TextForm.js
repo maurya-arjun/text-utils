@@ -62,7 +62,7 @@ const [text, setText] = useState('');
     </div>
     <div className="container my-3" style={{color: props.textColor === 'dark' ? 'white' : 'black'}}>
       <h2>Your text summary</h2>
-      <p>{text.split(" ").length} words {text.length} characters</p>
+      <p>{text.length > 0 ? text.match(/\S+/g).length : '0'} words {text.length} characters</p>
       <p>{0.008 * text.split(" ").length} Minutes need to read the above texts</p>
       <h2>Preview</h2>
       <p>{text.length > 0 ? text : "Enter something is the text box above to preview it here."}</p>

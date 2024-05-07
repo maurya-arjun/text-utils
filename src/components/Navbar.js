@@ -18,10 +18,39 @@ export default function Navbar(props) {
           <a className="nav-link" href="/">{props.aboutText}</a>
         </li>
       </ul>
-      <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
-        <input className="form-check-input" type="checkbox" onClick={props.toggleMode} role="switch" id="flexSwitchCheckDefault" />
-        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
+    
+      <div className={`form-check text-${props.mode === 'dark' ? 'light' : 'dark'}`}>
+        <input className="form-check-input" 
+        type="radio" 
+        name="flexRadioDefault" 
+        value="light"
+        onClick={props.toggleMode}
+        id="flexRadioDefault1" />
+        <label className="form-check-label" htmlFor="flexRadioDefault1">
+            Enable Dark Mode
+        </label>
       </div>
+      <div className={`form-check text-${props.mode === 'red' ? 'light' : 'danger'}`}>
+        <input className="form-check-input" 
+        type="radio" 
+        name="flexRadioDefault" 
+        value="red"
+        onClick={props.toggleMode}
+        id="flexRadioDefault1" />
+        <label className="form-check-label" htmlFor="flexRadioDefault1">
+            Enable Red Dark Mode
+        </label>
+      </div>
+      {/* <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
+        <input className="form-check-input" 
+        type="checkbox" 
+        value={props.mode}
+        onClick={props.toggleMode} 
+        role="switch" 
+        id="flexSwitchCheckDefault"
+        disabled={props.mode === 'danger'} />
+        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
+      </div> */}
     </div>
   </div>
 </nav>
