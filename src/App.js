@@ -21,17 +21,22 @@ function App() {
     }, 3000);
   };
 
-  const toggleMode = (event) => {
-    console.log(event.target.value);
-    if (event.target.value === "light") {
+  // Following removeBodyClass method is used for color palate
+  
+  // const removeBodyClass = () => {
+  //   document.body.classList.remove('bg-light');
+  //   document.body.classList.remove('bg-dark');
+  //   document.body.classList.remove('bg-danger');
+  // }
+
+  const toggleMode = (cls) => {
+    // removeBodyClass();
+    // document.body.classList.add('bg-'+cls);
+    if (darkMode === "light") {
       setDarkMode("dark");
       document.body.style.backgroundColor = "#042743";
       showAlert("Dark mode has been enabled!", "success");
-      document.title = "TextUtils - Dark Mode"; // To dynamic update the page title.
-    } else if (event.target.value === "red") {
-      setDarkMode("danger");
-      document.body.style.backgroundColor = "#ae1e1e";
-      showAlert("Red mode has been enabled!", "success");
+      //document.title = "TextUtils - Dark Mode"; // To dynamic update the page title.
     } else {
       setDarkMode("light");
       document.body.style.backgroundColor = "white";
@@ -51,12 +56,12 @@ function App() {
       <Alert alert={alert} />
       <div className="container my-3">
         <Routes>
-              <Route exact path="/about" element={<About />}>
+              <Route exact path="/about" element={<About mode={darkMode} />}>
                 
               </Route>
               <Route exact path="/" element={<TextForm
                   showAlert={showAlert}
-                  heading="Enter the text to analyze below"
+                  heading="TextUtils - Word Counter, Character Counter, Remove Extra Spaces"
                   textColor={darkMode}
                 />}>
                 

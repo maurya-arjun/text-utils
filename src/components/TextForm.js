@@ -22,12 +22,12 @@ export default function TextForm(props) {
     const handleClearClick = () => {
       let clearText = '';
       setText(clearText);
+      props.showAlert("Text Cleard !", 'success');
     }
 
     const handleCopyClick = () => {
-        let textArea = document.getElementById('myBox');
-        textArea.select();
-        navigator.clipboard.writeText(textArea.value);
+        navigator.clipboard.writeText(text);
+        props.showAlert("Copied !", 'success');
     }
 
     const handleExtraSpacesClick = () => {
@@ -54,18 +54,19 @@ const [text, setText] = useState('');
           style={{backgroundColor: props.textColor === 'dark' ? 'grey' : 'white', color: props.textColor === 'dark' ? 'white' : 'black'}}
         ></textarea>
       </div>
-      <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
-      <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to LowerCase</button>
-      <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
-      <button className="btn btn-primary mx-2" onClick={handleCopyClick}>Copy Text</button>
-      <button className="btn btn-primary mx-2" onClick={handleExtraSpacesClick}>Remove Extra Spaces</button>
+      <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
+      <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleLowClick}>Convert to LowerCase</button>
+      <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleClearClick}>Clear Text</button>
+      <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleCopyClick}>Copy Text</button>
+      <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleExtraSpacesClick}>Remove Extra Spaces</button>
     </div>
     <div className="container my-3" style={{color: props.textColor === 'dark' ? 'white' : 'black'}}>
       <h2>Your text summary</h2>
-      <p>{text.length > 0 ? text.match(/\S+/g).length : '0'} words {text.length} characters</p>
-      <p>{0.008 * text.split(" ").length} Minutes need to read the above texts</p>
+      {/* <p>{text.length > 0 ? text.match(/\S+/g).length : '0'} words {text.length} characters</p> */}
+      <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words {text.length} characters</p>
+      <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes need to read the above texts</p>
       <h2>Preview</h2>
-      <p>{text.length > 0 ? text : "Enter something is the text box above to preview it here."}</p>
+      <p>{text.length > 0 ? text : "Nothing to preview."}</p>
     </div>
     </>
   );
