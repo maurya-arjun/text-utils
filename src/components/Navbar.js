@@ -15,9 +15,6 @@ export default function Navbar(props) {
         <li className="nav-item">
           <Link className="nav-link" aria-current="page" to="/">Home</Link>
         </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/about">{props.aboutText}</Link>
-        </li>
       </ul>
     
       {/* <div className="d-flex">
@@ -48,11 +45,9 @@ export default function Navbar(props) {
 }
 
 Navbar.propTypes = {
-    title: PropTypes.string.isRequired,
-    aboutText: PropTypes.string
+    title: PropTypes.string.isRequired
 }
 
 Navbar.defaultProps = {
-    title: "Set title here",
-    aboutText: "Set about text here"
+    title: "Set title here"
 }
